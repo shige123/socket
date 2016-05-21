@@ -1,4 +1,4 @@
-//クライアント
+ //クライアント
 
 #include <stdio.h>
 #include <stdlib.h>
