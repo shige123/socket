@@ -58,14 +58,14 @@ int main()
   }
   data_receive(dstSocket, getFileName(buf));
   /*
-  char fname[15] = "adad7a7a-r.jpg";
+  char fname[15] = "result_png_0.png";
   if(size = send(dstSocket, fname, 15, 0) < 0)
   {
   	fprintf(stderr, "error\n");
   }
   tranceport(dstSocket, fname);
   printf("finish\n");
-*/
+  */
   close(dstAddr);
   return 0;
 }
