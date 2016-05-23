@@ -11,15 +11,17 @@
 
 #define BUFFER_SIZE 256
 
-//char* getFileName(char *path);
-//void data_receive(int socket, char *name);
+char* getFileName(char *path);
+void data_receive(int socket, char *name);
 void tranceport(int socket, char *path);
 
 int main()
 {
   /* IP アドレス、ポート番号、ソケット */
  // char destination[80];
-  unsigned short port = 50000;
+  unsigned short port1 = 50000;
+  unsigned short port2 = 50001;
+
   int dstSocket;
   int size;
 
@@ -35,7 +37,7 @@ int main()
 
   /* sockaddr_in 構造体のセット */
   memset(&dstAddr, 0, sizeof(dstAddr));
-  dstAddr.sin_port = htons(port);
+  dstAddr.sin_port = htons(port1);
   dstAddr.sin_family = AF_INET;
   dstAddr.sin_addr.s_addr = inet_addr(destination);
  
@@ -54,19 +56,23 @@ int main()
   tranceport(dstSocket, fname);
   printf("finish\n");
 
-  /*
+ 
   
-  if(size = recv(dstSocket, buf, 15, 0) < 0)
+  if((size = recv(dstSocket, buf, 20, 0)) < 0)
   {
     fprintf(stderr, "error\n");
+    exit(1);
   }
+  
+  
+  printf("debug\n");
   data_receive(dstSocket, getFileName(buf));
-  */
+  
   close(dstAddr);
   return 0;  
 }
 
-/*  
+
 char *getFileName(char *path)
   {
   char *ptoken;
@@ -113,7 +119,7 @@ void data_receive(int socket, char *name)
   // ファイルクローズ
   fclose(fp);
 }
-*/
+
 void tranceport(int socket, char *path)
 {
 	FILE *fp;
